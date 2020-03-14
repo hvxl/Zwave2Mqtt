@@ -341,7 +341,7 @@
                       </v-flex>
                       <v-flex xs6>
                         <v-switch
-                          label="Send 'list' values as integer index"
+                          label="Send 'list' values as integer"
                           v-model="gateway.integerList"
                         ></v-switch>
                       </v-flex>
