@@ -181,6 +181,7 @@ Zwave settings:
 - **Auto Heal Network**: Enable this to schedule automatic network heals to a specfic time
 - **Heal hours**: When auto heal is enabled, specified the hours at which `healNetwork` will be daily triggered (0-23)
 - **Poll interval**: Interval in milliseconds between polls (should not be less than 1s per device)
+- **Commands timeout**: Seconds to wait before automatically stop inclusion/exclusion
 - **Configuration Path**: The path to Openzwave devices config db
 - **Assume Awake**: Assume Devices that support the Wakeup Class are awake when starting up OZW
 - **Auto Update Config File**: Auto update Zwave devices database
@@ -684,6 +685,10 @@ There are some custom apis that can be called that are not part of Zwave Client:
   - `homeid`: homeId
   - `name`: homeId Hex
   - `version`: OpenZwave version
+  - `uptime`: Seconds from when the app process is started. It's the result of `process.uptime()`
+  - `lastUpdate`: Timestamp of latest event received from OZW
+  - `status`: Client status. Could be: 'driverReady', 'connected', 'scanDone', 'driverFailed', 'closed'
+  - `cntStatus`: Controller status received from ozw notifications controller command. If inclusion/exclusion is running it wold be `Waiting`
 
 ### Set values
 
@@ -773,8 +778,9 @@ Example: `curl localhost:8091/health/zwave -H "Accept: text/plain"`
 
 Thanks to this people for help with issues tracking and contributions:
 
-- @sjorge for testing with different os and Openzwave 1.6
-- @jshridha for testing home assistant integration and contribution
+- [__Jorge Schrauwen__](https://github.com/sjorge)
+- [__Jay__](https://github.com/jshridha)
+- [__Thiago Oliveira__](https://github.com/chilicheech)
 
 ## :pencil: TODOs
 
